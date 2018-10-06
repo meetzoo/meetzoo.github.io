@@ -8,8 +8,8 @@
 </head>
 <body>
   <div id="app-5">
-    <p>state: {{message.state}}</p>
-    <p>sets:{{ message.runs }}</p>
+    <p>state: {{state}}</p>
+    <p>sets:{{ runs }}</p>
     <!-- <audio id='player'>
       <source src="beep.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -17,7 +17,7 @@
       <button v-on:click="startTimer">start</button>
       <button v-on:click="stopTimer">stop</button>
       <button @click="reset">reset</button>
-      <p v-if=message.action>{{ message.action }}</p>
+      <p v-if=action>{{ action }}</p>
   </div>
 </body>
 <script type="text/javascript" src="rxjs.umd.min.js"></script>

@@ -15,53 +15,26 @@ let stopSound = new Audio('beep-stop.mp3');
 //     start();
 //   });
 
-let counter = 0;
-let message = {
-  state: 'Stopped',
-  runs: 0
-};
+// let counter = 0;
+// let message = {
+//   state: 'Stopped',
+//   runs: 0
+// };
 // let message = {
 //   runs: 0
 // };
 let interval;
-function playSounds() {
-  counter += 100;
-  if (counter === 200) {
-    message.runs++;
-    console.log('should play');
-    startSound.play();
-    message.action = 'ACTION';
-    setTimeout(() => { message.action = ''; }, 500);
-  } else if (counter === 6200) {
-    console.log('should play');
-    message.action = 'RELAX';
-    setTimeout(() => { message.action = ''; }, 500);
-    stopSound.play();
-  } else if (counter > 17900) {
-    counter = 0;
-  }
-}
-function start(){
-  if (!interval){
-    message.state = 'Running';
-    console.log('start timer');
-    interval = setInterval(playSounds, 100);
-  }
-}
-function stop(){
-  console.log('attempt to stop timer');
-  if (interval){
-    message.state = 'Stopped';
-    console.log('timer stopped');
-    interval = clearInterval(interval);
-  }
-}
+
 
 let app5 = new Vue({
   el: '#app-5',
   data: {
     counter: 0,
-    message: message
+    interval: undefined,
+    state: 'stopped',
+    runs: 0,
+    action: '',
+    // message: message
 
   },
   // watch:{
@@ -75,18 +48,54 @@ let app5 = new Vue({
   methods: {
     startTimer: function () {
       console.log('vue started this');
-      start();
-      this.message.state = 'Started';
+      if (!this.interval) {
+        this.state = 'Running';
+        console.log('start timer');
+        this.interval = setInterval(this.playSounds, 100);
+      }
+      this.state = 'Started';
     },
     stopTimer: function () {
       console.log('vue stopped this');
-      console.log(`runs: ${message.runs}`);
-      stop();
-      this.message.state = 'Stopped';
+      console.log(`runs: ${this.runs}`);
+      if (this.interval) {
+        this.state = 'Stopped';
+        console.log('timer stopped');
+        this.interval = clearInterval(this.interval);
+      }
+      this.state = 'Stopped';
     },
     reset: function() {
-      message.runs = 0;
-      counter = 0;
-    }
+      this.stopTimer();
+      this.runs = 0;
+      this.counter = 0;
+      this.action = 0;
+    },
+    playSounds: function () {
+      this.counter += 100;
+      if (this.counter === 200) {
+        this.runs++;
+        console.log('should play');
+        startSound.play();
+        this.action = 'ACTION';
+      } else if (this.counter === 6200) {
+        console.log('should play');
+        this.action = 'RELAX';
+        stopSound.play();
+      } else if (this.counter > 17900) {
+        this.counter = 0;
+      }
+    },
+  // start: function() {
+
+  // },
+  // function stop() {
+  //   console.log('attempt to stop timer');
+  //   if (interval) {
+  //     message.state = 'Stopped';
+  //     console.log('timer stopped');
+  //     interval = clearInterval(interval);
+  //   }
+  // }
   },
 });
