@@ -52,18 +52,17 @@ let app5 = new Vue({
         this.state = 'Running';
         console.log('start timer');
         this.interval = setInterval(this.playSounds, 100);
+        this.state = 'Started';
       }
-      this.state = 'Started';
     },
     stopTimer: function () {
-      console.log('vue stopped this');
       console.log(`runs: ${this.runs}`);
       if (this.interval) {
         this.state = 'Stopped';
         console.log('timer stopped');
         this.interval = clearInterval(this.interval);
+        this.state = 'Stopped';
       }
-      this.state = 'Stopped';
     },
     reset: function() {
       this.stopTimer();
@@ -72,30 +71,18 @@ let app5 = new Vue({
       this.action = 0;
     },
     playSounds: function () {
+      console.log(this.counter);
       this.counter += 100;
       if (this.counter === 200) {
         this.runs++;
-        console.log('should play');
         startSound.play();
         this.action = 'ACTION';
       } else if (this.counter === 6200) {
-        console.log('should play');
         this.action = 'RELAX';
         stopSound.play();
       } else if (this.counter > 17900) {
         this.counter = 0;
       }
     },
-  // start: function() {
-
-  // },
-  // function stop() {
-  //   console.log('attempt to stop timer');
-  //   if (interval) {
-  //     message.state = 'Stopped';
-  //     console.log('timer stopped');
-  //     interval = clearInterval(interval);
-  //   }
-  // }
   },
 });
