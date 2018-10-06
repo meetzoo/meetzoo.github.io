@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>Countdown timer</title>
 
 </head>
 <body>
@@ -14,8 +14,8 @@
       <source src="beep.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio> -->
-      <button v-on:click="start">start</button>
-      <button v-on:click="stop">stop</button>
+      <button v-on:click="startTimer">start</button>
+      <button v-on:click="stopTimer">stop</button>
       <button @click="reset">reset</button>
       <p v-if=message.action>{{ message.action }}</p>
   </div>

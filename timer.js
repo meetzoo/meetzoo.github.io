@@ -54,34 +54,39 @@ function stop(){
     message.state = 'Stopped';
     console.log('timer stopped');
     interval = clearInterval(interval);
-    counter = 0;
   }
 }
 
-var app5 = new Vue({
+let app5 = new Vue({
   el: '#app-5',
   data: {
+    counter: 0,
     message: message
+
   },
   // watch:{
   //   runs: function(val){
   //     this.runs = val;
   //   }
   // },
+  created: function(){
+
+  },
   methods: {
-    start: function () {
+    startTimer: function () {
       console.log('vue started this');
       start();
-      // this.message = 'Started';
+      this.message.state = 'Started';
     },
-    stop: function () {
+    stopTimer: function () {
       console.log('vue stopped this');
       console.log(`runs: ${message.runs}`);
       stop();
-      // this.message = 'Stopped';
+      this.message.state = 'Stopped';
     },
     reset: function() {
       message.runs = 0;
+      counter = 0;
     }
   },
 });
