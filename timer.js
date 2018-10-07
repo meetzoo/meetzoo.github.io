@@ -1,47 +1,16 @@
 'use strict';
 
-let startSound = new Audio('beep.mp3');
-let stopSound = new Audio('beep-stop.mp3');
-
-//
-// let player = document.getElementById('player');
-// document.getElementById('stop').onclick = stop;
-// let startButton = document.getElementById('start');
-// startButton.onclick = start;
-
-// rxjs.fromEvent(startButton, 'click')
-//   .subscribe(() => {
-//     console.log('start Clicked!');
-//     start();
-//   });
-
-// let counter = 0;
-// let message = {
-//   state: 'Stopped',
-//   runs: 0
-// };
-// let message = {
-//   runs: 0
-// };
-let interval;
-
-
-let app5 = new Vue({
+new Vue({
   el: '#app-5',
   data: {
     counter: 0,
     interval: undefined,
     state: 'stopped',
     runs: 0,
+    startSound: new Audio('beep.mp3'),
+    stopSound: new Audio('beep-stop.mp3'),
     action: '',
-    // message: message
-
   },
-  // watch:{
-  //   runs: function(val){
-  //     this.runs = val;
-  //   }
-  // },
   created: function(){
 
   },
@@ -75,11 +44,11 @@ let app5 = new Vue({
       this.counter += 100;
       if (this.counter === 200) {
         this.runs++;
-        startSound.play();
+        this.startSound.play();
         this.action = 'ACTION';
       } else if (this.counter === 6200) {
         this.action = 'RELAX';
-        stopSound.play();
+        this.stopSound.play();
       } else if (this.counter > 17900) {
         this.counter = 0;
       }
