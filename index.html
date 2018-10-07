@@ -10,17 +10,16 @@
   <div id="app-5">
     <p>state: {{state}}</p>
     <p>sets:{{ runs }}</p>
-    <!-- <audio id='player'>
+    <audio id='player' controls>
       <source src="beep.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
-      </audio> -->
-      <button v-on:click="startTimer">start</button>
-      <button v-on:click="stopTimer">stop</button>
-      <button @click="reset">reset</button>
-      <p v-if=action>{{ action }}</p>
+      </audio>
+    <button v-on:click="startTimer">start</button>
+    <button v-on:click="stopTimer">stop</button>
+    <button @click="reset">reset</button>
+    <p v-if=action>{{ action }}</p>
   </div>
 </body>
-<script type="text/javascript" src="rxjs.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript" src="timer.js"></script>
 </html>
