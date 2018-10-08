@@ -14,10 +14,11 @@
       <source src="beep.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
-    <button v-on:click="startTimer">start</button>
-    <button v-on:click="stopTimer">stop</button>
-    <button @click="reset">reset</button>
+    <button :disabled="!!interval" v-on:click="startTimer">Start</button>
+    <button :disabled="!interval" v-on:click="stopTimer">Pause</button>
+    <button @click="reset">Reset</button>
     <p v-if=action>{{ action }}</p>
+    <p v-if=counter>Time: {{ counter/1000 }}</p>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

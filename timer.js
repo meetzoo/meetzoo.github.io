@@ -1,11 +1,15 @@
 'use strict';
-
-new Vue({
+const states = {
+  reset: 'Stopped',
+  paused: 'Paused',
+  running: 'Running'
+};
+let app = new Vue({
   el: '#app-5',
   data: {
     counter: 0,
     interval: undefined,
-    state: 'stopped',
+    state: states.reset,
     runs: 0,
     startSound: new Audio('beep.mp3'),
     stopSound: new Audio('beep-stop.mp3'),
@@ -16,21 +20,18 @@ new Vue({
   },
   methods: {
     startTimer: function () {
-      console.log('vue started this');
       if (!this.interval) {
-        this.state = 'Running';
         console.log('start timer');
         this.interval = setInterval(this.playSounds, 100);
-        this.state = 'Started';
+        this.state = states.running;
       }
     },
     stopTimer: function () {
-      console.log(`runs: ${this.runs}`);
+      console.log('pause clicked');
       if (this.interval) {
-        this.state = 'Stopped';
-        console.log('timer stopped');
+        this.state = states.paused;
+        console.log('timer Paused');
         this.interval = clearInterval(this.interval);
-        this.state = 'Stopped';
       }
     },
     reset: function() {
@@ -38,6 +39,7 @@ new Vue({
       this.runs = 0;
       this.counter = 0;
       this.action = 0;
+      this.state = states.reset;
     },
     playSounds: function () {
       console.log(this.counter);
@@ -45,7 +47,7 @@ new Vue({
       if (this.counter === 200) {
         this.runs++;
         this.startSound.play();
-        this.action = 'ACTION';
+        this.action = 'GO';
       } else if (this.counter === 6200) {
         this.action = 'RELAX';
         this.stopSound.play();
