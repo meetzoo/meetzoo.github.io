@@ -28,17 +28,6 @@ let app = new Vue({
   created: function(){
 
   },
-  filters: {
-    displayTime: function (value=0){
-      if (!value){
-        return '';
-      }
-      value = Math.round(value * 100) / 100;
-      value = value / 1000;
-      value = value.toString();
-      return value;
-    }
-  },
   methods: {
     startTimer: function () {
       if (!this.interval) {
@@ -80,11 +69,5 @@ let app = new Vue({
       }
       this.counter += 100;
     },
-    // enableSafari: function() {
-    //   console.log('User from safari clicked on enable button');
-    //   this.isSafari = false;
-    //   window.scrollTo(0, 1);
-    //   window.scrollTo(0, 0);
-    // },
   },
 });
