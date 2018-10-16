@@ -23,10 +23,13 @@
         Action interval: <input :disabled="!!interval" type="number" v-model="firstInterval"> seconds
       </p>
       <p>
-        Start sound: <input :disabled="!!interval" type="text" v-model="startSoundLocation"> <button @click="setStartSound">Set</button>
+        Start sound: <input :disabled="!!interval" type="text" v-model="startSoundLocation"> <button :disabled="!!interval" @click="setStartSound">Set</button>
       </p>
       <p>
         Rest interval: <input :disabled="!!interval" type="number" v-model="secondInterval"> seconds
+      </p>
+      <p>
+        Stop sound: <input :disabled="!!interval" type="text" v-model="stopSoundLocation"> <button :disabled="!!interval" @click="setStopSound">Set</button>
       </p>
 
     </div>

@@ -73,6 +73,9 @@ let app = new Vue({
     },
     setStartSound: function(){
       this.startSound = new Audio(this.startSoundLocation);
-    }
+    },
+    setStopSound: function () {
+      this.stopSound = new Audio(this.stopSoundLocation);
+    },
   },
 });
