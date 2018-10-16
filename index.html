@@ -8,19 +8,28 @@
 </head>
 <body>
   <div id="app-5">
-    <p>state: {{state}}</p>
-    <p>sets:{{ runs }}</p>
-    <p>
-      Action interval: <input :disabled="!!interval" type="number" v-model="firstInterval"> seconds
-    </p>
-    <p>
-      Rest interval: <input :disabled="!!interval" type="number" v-model="secondInterval"> seconds
-    </p>
-    <button :disabled="!!interval" @click="startTimer">Start</button>
-    <button :disabled="!interval" @click="stopTimer">Pause</button>
-    <button @click="reset">Reset</button>
-    <p v-if=counter>Time: {{ (counter/1000).toFixed(2) }}</p>
-    <p v-if=action>{{ action }}</p>
+    <div id="run">
+      <p>state: {{state}}</p>
+      <p>sets:{{ runs }}</p>
+      <button :disabled="!!interval" @click="startTimer">Start</button>
+      <button :disabled="!interval" @click="stopTimer">Pause</button>
+      <button @click="reset">Reset</button>
+      <button @click="showOptions = !showOptions">Options</button>
+      <p>Time: {{ (counter/1000).toFixed(2) }}</p>
+      <p v-if=action>{{ action }}</p>
+    </div>
+    <div id="options" v-if="showOptions" :disabled="!!interval">
+      <p>
+        Action interval: <input :disabled="!!interval" type="number" v-model="firstInterval"> seconds
+      </p>
+      <p>
+        Start sound: <input :disabled="!!interval" type="text" v-model="startSoundLocation"> <button @click="setStartSound">Set</button>
+      </p>
+      <p>
+        Rest interval: <input :disabled="!!interval" type="number" v-model="secondInterval"> seconds
+      </p>
+
+    </div>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

@@ -14,8 +14,9 @@ let app = new Vue({
     interval: undefined,
     state: states.reset,
     runs: 0,
-    startSound: new Audio('./beep.mp3'),
-    stopSound: new Audio('./beep-stop.mp3'),
+    startSoundLocation: './beep.mp3',
+    stopSoundLocation: './beep-stop.mp3',
+    showOptions: false,
     // isSafari: /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor),
     // safariConfirmed: '',
     action: '',
@@ -26,7 +27,8 @@ let app = new Vue({
   //   }
   // },
   created: function(){
-
+    this.startSound = new Audio(this.startSoundLocation);
+    this.stopSound = new Audio(this.stopSoundLocation);
   },
   methods: {
     startTimer: function () {
@@ -69,5 +71,8 @@ let app = new Vue({
       }
       this.counter += 100;
     },
+    setStartSound: function(){
+      this.startSound = new Audio(this.startSoundLocation);
+    }
   },
 });
