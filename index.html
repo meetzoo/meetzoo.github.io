@@ -11,10 +11,10 @@
     <p>state: {{state}}</p>
     <p>sets:{{ runs }}</p>
     <p>
-      First Interval <input :disabled="!!interval" type="number" v-model="firstInterval"> seconds
+      Action interval: <input :disabled="!!interval" type="number" v-model="firstInterval"> seconds
     </p>
     <p>
-      Second Interval <input :disabled="!!interval" type="number" v-model="secondInterval"> seconds
+      Rest interval: <input :disabled="!!interval" type="number" v-model="secondInterval"> seconds
     </p>
     <button :disabled="!!interval" @click="startTimer">Start</button>
     <button :disabled="!interval" @click="stopTimer">Pause</button>
