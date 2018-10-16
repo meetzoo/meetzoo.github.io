@@ -53,9 +53,9 @@ let app = new Vue({
     },
     playSounds: function () {
       console.log(this.counter);
-      if (this.counter > 17900) {
+      if (this.counter > (( +this.firstInterval + +this.secondInterval) * 1000)) {
         return this.counter = 0;
-      } else if (this.counter === 6100) {
+      } else if (this.counter === (this.firstInterval * 1000)) {
         this.action = 'RELAX';
         this.stopSound.play().catch(error => {
           console.log('not able to play, error', error);
